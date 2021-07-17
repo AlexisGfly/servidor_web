@@ -1,0 +1,16 @@
+h1 {
+    font-weight: bold;
+    color: rgb(160, 95, 95);
+}
+
+table {
+    border: 5px;
+}
+
+button {
+    padding: 5px;
+    width: 20%;
+    border-radius: 12px;
+    background-color: black;
+    color: white;
+}

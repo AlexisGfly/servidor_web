@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books & Authors</title>
+</head>
+<body>
+    <h1>Add an Author</h1><br>
+    <form method="POST" action='/authors_agregado'>
+        {% csrf_token %}
+        <label>First Name: <input type = "text" name="nombre_html" value="{{ nombre_html }}"></label><br>
+        <label>Last Name: <input type = "text" name="apellido_html" value="{{ apellido_html }}"></label><br>
+        <label>Notes: <textarea name="notas_html" value="{{ notas_html }}"></textarea></label><br><br>
+        <button type='submit'>Add</button><br><br>
+    </form>
+
+
+    <table border="1">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Action</th>
+        </thead>
+        
+        <tbody>
+            {% for author in authors %}
+            <tr>
+                <form method="POST" action='/show_author'>
+                    {% csrf_token %}
+                    <td>{{author.id}}</td>
+                    <td>{{author.first_name}} {{author.last_name}}</td>
+                    <td>
+                        <button  name="author_id" value={{author.id}} type='submit'>View</button>
+                    </td>
+                </form>
+            </tr> 
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
